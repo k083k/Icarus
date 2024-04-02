@@ -3,10 +3,9 @@ import {AvatarWoman, CorporateManAvatar} from "../../../public/avatars";
 import React, {SyntheticEvent, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import useAuth from "@/hooks/useAuth";
+import {AvatarProps} from "@/types";
+import {logoutUser} from "@/services/apiService";
 
-interface AvatarProps {
-    auth: boolean;
-}
 
 export default function AvatarDropdown({auth}: AvatarProps){
     const router = useRouter();
@@ -27,11 +26,7 @@ export default function AvatarDropdown({auth}: AvatarProps){
     const logout = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        await fetch('http://localhost:8000/api/v1/logout', {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            credentials: 'include',
-        });
+        await logoutUser();
 
         router.push('/login');
     }
@@ -60,8 +55,7 @@ export default function AvatarDropdown({auth}: AvatarProps){
                         </li>
                         <li>
                             <a className="block w-full whitespace-nowrap bg-white px-4 py-2 text-sm font-normal text-black hover:bg-zinc-200/60 focus:bg-zinc-200/60 focus:outline-none active:bg-zinc-200/60 active:no-underline dark:bg-black dark:text-white dark:hover:bg-neutral-800/25 dark:hover:text-black dark:focus:bg-neutral-800/25 dark:active:bg-neutral-800/25"
-                               data-twe-dropdown-item-ref data-twe-toggle="tooltip"
-                               title="Something else here" onClick={logout}>Logout</a>
+                               data-twe-dropdown-item-ref onClick={logout}>Logout</a>
                         </li>
                     </ul>
                 </div>

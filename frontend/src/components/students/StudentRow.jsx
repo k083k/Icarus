@@ -4,7 +4,7 @@ import { faEye, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import {AvatarMan, AvatarWoman} from '../../../public/avatars';
 
-const StudentRow = ({ student, onView, onDelete }) => {
+const StudentRow = ({student, onView, onDelete}) => {
 
     const handleView = () => {
         onView(student, "View Student Details");
@@ -29,14 +29,11 @@ const StudentRow = ({ student, onView, onDelete }) => {
                 {student.parentName}
             </td>
             <td className="px-6 py-4 flex justify-center items-center">
-                <a href="#" className="text-gray-400 dark:hover:text-black hover:text-gray-600 mr-2" onClick={handleView}>
-                    <FontAwesomeIcon icon={faEye} />
+                <a href="#" className="text-gray-400 dark:hover:text-black hover:text-gray-600 mr-2">
+                    <FontAwesomeIcon icon={faEye} onClick={handleView}/>
                 </a>
-                <a href="#" className="text-gray-400 dark:hover:text-black hover:text-gray-600 mx-2">
-                    <FontAwesomeIcon icon={faPencil} />
-                </a>
-                <a href="#" className="text-gray-400 dark:hover:text-black hover:text-gray-600 ml-2" onClick={handleDelete}>
-                    <FontAwesomeIcon icon={faTrash} />
+                <a href="#" className="text-gray-400 dark:hover:text-black hover:text-gray-600 ml-2">
+                    <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(student._id, "Confirm Deletion")}/>
                 </a>
             </td>
         </tr>

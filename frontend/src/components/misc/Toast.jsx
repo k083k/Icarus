@@ -1,7 +1,19 @@
-import React from 'react';
+'use client'
+import React, {useEffect} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Toast = ({icon, message, onClose}) => {
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            onClose();
+        }, 3000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [onClose]);
+
     return (
         <div className='flex flex-col justify-center items-center'>
             <div

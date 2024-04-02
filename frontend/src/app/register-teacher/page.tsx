@@ -3,46 +3,33 @@ import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLaptop} from "@fortawesome/free-solid-svg-icons";
 import RegisterForm from "@/components/auth/RegisterForm";
-import { Role } from"./RegisterFormProps"
+import {fetchGenders, fetchRoles} from "@/services/apiService";
+import { Role, Gender } from "@/types"; // Importing the Role and Gender interfaces
+
 
 
 export default function Register() {
-    const [roles, setRoles] = useState<[]>([]);
-    const [genders, setGenders] = useState([]);
+    const [roles, setRoles] = useState<Role[]>([]);
+    const [genders, setGenders] = useState<Gender[]>([]);
 
     useEffect(() => {
-        // Fetch roles data when component mounts
-        fetchRoles();
-        fetchGenders();
+        fetchRolesData();
+        fetchGendersData();
     }, []);
 
-    const fetchRoles = async () => {
+    const fetchRolesData = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/roles');
-            if (!response.ok) {
-                throw new Error('Failed to fetch roles');
-            }
-            const data = await response.json();
-            if (!data.roles) {
-                throw new Error('Roles data not found in response');
-            }
-            setRoles(data.roles);
+            const data = await fetchRoles(); // Call fetchRoles function from apiService
+            setRoles(data); // Set fetched roles data to state
         } catch (error) {
             console.error('Error fetching roles:', error);
         }
     };
 
-    const fetchGenders = async () => {
+    const fetchGendersData = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/data');
-            if (!response.ok) {
-                throw new Error('Failed to genders');
-            }
-            const data = await response.json();
-            if (!data.gender) {
-                throw new Error('genders data not found in response');
-            }
-            setGenders(data.gender);
+            const data = await fetchGenders(); // Call fetchGenders function from apiService
+            setGenders(data); // Set fetched genders data to state
         } catch (error) {
             console.error('Error fetching genders:', error);
         }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {fetchUserData} from "@/services/apiService";
 
 const useAuth = () => {
     const [auth, setAuth] = useState(false);
@@ -10,18 +11,11 @@ const useAuth = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/v1/user', {
-                    credentials: 'include',
-                });
-                if (response.ok) {
-                    const { data } = await response.json();
-                    setAuth(true);
-                    setUserName(`${data.first_name} ${data.last_name}`);
-                    setUserGender(data.gender);
-                    setUserRole(data.role);
-                } else {
-                    setAuth(false);
-                }
+                const { data } = await fetchUserData();
+                setAuth(true);
+                setUserName(`${data.first_name} ${data.last_name}`);
+                setUserGender(data.gender);
+                setUserRole(data.role);
             } catch (error) {
                 setAuth(false);
             } finally {

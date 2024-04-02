@@ -2,27 +2,10 @@
 import React, {SyntheticEvent, useState} from 'react';
 import {useRouter} from "next/navigation";
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
-import Toast from "@/components/Toast";
+import Toast from "@/components/misc/Toast";
+import { Title, Suffix, Gender, Grade } from "@/types";
+import {createStudent} from "@/services/apiService";
 
-interface Title {
-    value: string;
-    label: string;
-}
-
-interface Suffix {
-    value: string;
-    label: string;
-}
-
-interface Gender {
-    value: string,
-    label: string
-}
-
-interface Grade {
-    value: string,
-    label: string
-}
 
 interface Props {
     titles: Title[];
@@ -66,14 +49,7 @@ export default function CreateStudentForm({titles, suffixes, genders, grades}: P
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/v1/students', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify(modifiedRequestBody)
-            });
+            const response = await createStudent(modifiedRequestBody);
 
             if (response.ok) {
                 // @ts-ignore
@@ -83,7 +59,7 @@ export default function CreateStudentForm({titles, suffixes, genders, grades}: P
 
                 setTimeout(() => {
                     setShowToast(false);
-                    window.location.reload();
+                    router.push('/students'); // Assuming you want to reload the page using Next.js router
                 }, 3000);
             } else {
                 console.error('Error creating student:', response.statusText);

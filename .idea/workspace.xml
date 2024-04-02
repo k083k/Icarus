@@ -4,7 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b324a67c-c02e-4909-918b-eadbd7ed9aab" name="Changes" comment="" />
+    <list default="true" id="b324a67c-c02e-4909-918b-eadbd7ed9aab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/admins/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/create-admin/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/admins/AdminRow.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/admins/AdminsTable.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/admins/CreateAdminForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/misc/Card.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/protectedRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/protectedRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/icons/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/icons/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/admin-dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/admin-dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/create-student/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/create-student/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/create-teacher/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/create-teacher/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/data/roles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/data/roles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/register-teacher/RegisterFormProps.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/register-teacher/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/register-teacher/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/students/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/students/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/teachers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/teachers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Toast.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/misc/Toast.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/misc/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/misc/Modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/navs/AvatarDopdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navs/AvatarDopdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/navs/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navs/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/navs/SideNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navs/SideNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/students/CreateStudentForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/students/CreateStudentForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/students/StudentRow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/students/StudentRow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/students/StudentsTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/students/StudentsTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/teachers/CreateTeacherForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/teachers/CreateTeacherForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/teachers/TeacherRow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/teachers/TeacherRow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/teachers/TeachersTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/teachers/TeachersTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/apiService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/apiService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,25 +70,27 @@
     <option name="showScratchesAndConsoles" value="false" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.server.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/k083k0r3/Desktop/Project Icarus&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/k083k0r3/Desktop/Project Icarus/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.Backend.executor": "Run",
+    "Node.js.server.js.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/k083k0r3/Desktop/Project Icarus",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "/Users/k083k0r3/Desktop/Project Icarus/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src/components/misc" />
@@ -61,10 +100,24 @@
       <recent name="$PROJECT_DIR$/frontend/src/components/students" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="server.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/backend">
+  <component name="RunManager" selected="Node.js.Backend">
+    <configuration name="Backend" type="NodeJSConfigurationType" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/backend">
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.Backend" />
+      <item itemvalue="npm.dev" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,6 +141,9 @@
       <workItem from="1711471039286" duration="18068000" />
       <workItem from="1711664071413" duration="26554000" />
       <workItem from="1711747623168" duration="48480000" />
+      <workItem from="1711890041831" duration="33048000" />
+      <workItem from="1711972817887" duration="10581000" />
+      <workItem from="1712004995633" duration="10940000" />
     </task>
     <servers />
   </component>

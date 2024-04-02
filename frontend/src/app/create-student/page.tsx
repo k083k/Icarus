@@ -1,12 +1,12 @@
 'use client'
 import React, {useEffect, useState} from 'react';
 import CreateStudentForm from "@/components/students/CreateStudentForm";
-import Nav from "@/components/navs/Nav";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLaptop} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/navigation";
 import withRoleGuard from "@/hoc/withRoleGuard";
 import Icarus from "@/app/layouts/icarus";
+import { fetchTitles, fetchSuffixes, fetchGenders, fetchGrades } from "@/services/apiService";
 
 
 const CreateStudent = () => {
@@ -23,22 +23,17 @@ const CreateStudent = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/data',{
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-            });
-            if (response.ok) {
-                const {title, suffix, gender, grade} = await response.json();
-                setTitles(title);
-                setSuffixes(suffix);
-                setGender(gender)
-                setGrade(grade)
-            } else {
-                console.error('Failed to data');
-            }
+            const titleData = await fetchTitles();
+            setTitles(titleData);
+
+            const suffixData = await fetchSuffixes();
+            setSuffixes(suffixData);
+
+            const genderData = await fetchGenders();
+            setGender(genderData);
+
+            const gradeData = await fetchGrades();
+            setGrade(gradeData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }

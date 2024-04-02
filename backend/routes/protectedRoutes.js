@@ -10,7 +10,7 @@ const {title, suffix, gender, grade} = require("../data/data");
 
 
 // Define a route for creating a new user (Admin)
-router.post('/admin', isLoggedIn, isAdmin, async (req, res) => {
+router.post('/admins', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const {first_name, last_name, email, address, gender} = req.body;
         if (!first_name || !last_name || !email || !address || !gender) {
@@ -22,7 +22,7 @@ router.post('/admin', isLoggedIn, isAdmin, async (req, res) => {
         const existingUser = await User.findOne({email});
         if (existingUser) {
             return res.status(400).send({
-                error: 'User already exists'
+                error: 'Admin already exists'
             });
         }
 
@@ -31,7 +31,7 @@ router.post('/admin', isLoggedIn, isAdmin, async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(tempPassword, salt);
 
-        const newUser = new User({
+        const newAdmin = new User({
             first_name,
             last_name,
             email,
@@ -41,9 +41,9 @@ router.post('/admin', isLoggedIn, isAdmin, async (req, res) => {
             gender: gender
         });
 
-        await newUser.save();
+        await newAdmin.save();
         res.status(201).send({
-            message: 'User created successfully', tempPassword
+            message: 'Admin created successfully', tempPassword
         });
     } catch (error) {
         console.error('Error creating user:', error);
@@ -53,11 +53,28 @@ router.post('/admin', isLoggedIn, isAdmin, async (req, res) => {
     }
 });
 
+router.get('/admins', isLoggedIn, isAdmin, async (req, res) => {
+    try {
+        // Find the role object for the role 'Teacher'
+        const adminRole = await Role.findOne({ name: roles.admin.name });
+
+        if (!adminRole) {
+            return res.status(404).json({ error: 'Admin role not found' });
+        }
+
+        const admins = await User.find({ role: adminRole._id }).populate('role', 'name');
+
+        res.status(200).json(admins);
+    } catch (error) {
+        console.error('Error fetching admins:', error);
+        res.status(500).json({ error: 'Failed to fetch admins' });
+    }
+});
+
 // Define a route for creating a new user (Teacher)
 router.post('/teachers', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const {first_name, last_name, email, address, gender} = req.body;
-
         if (!first_name || !last_name || !email || !address || !gender) {
             return res.status(400).send({
                 message: 'Please provide all required fields'
@@ -100,19 +117,19 @@ router.post('/teachers', isLoggedIn, isAdmin, async (req, res) => {
 
 router.get('/teachers', isLoggedIn, isAdmin, async (req, res) => {
     try {
-        // Fetch teachers from the database and populate the 'role' field with role documents
-        const teachers = await User.find({ role: { $exists: true } }).populate('role', 'name');
+        // Find the role object for the role 'Teacher'
+        const teacherRole = await Role.findOne({ name: roles.teacher.name });
 
-        // Extract role names from the populated role documents
-        const teachersWithRoleNames = teachers.map((teacher) => ({
-            ...teacher.toObject(),
-            role: teacher.role ? teacher.role.name : null, // Extract role name or set to null if role is not defined
-        }));
+        if (!teacherRole) {
+            return res.status(404).json({ error: 'Teacher role not found' });
+        }
 
-        res.status(200).json(teachersWithRoleNames);
+        const teachers = await User.find({ role: teacherRole._id }).populate('role', 'name');
+
+        res.status(200).json(teachers);
     } catch (error) {
         console.error('Error fetching teachers:', error);
-        res.status(500).json({error: 'Failed to fetch teachers'});
+        res.status(500).json({ error: 'Failed to fetch teachers' });
     }
 });
 
@@ -120,7 +137,6 @@ router.get('/teachers', isLoggedIn, isAdmin, async (req, res) => {
 router.post('/students', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const {first_name, last_name, date_of_birth, address, parentName, grade_class, gender} = req.body;
-
         if (!first_name || !last_name || !date_of_birth || !parentName || !address || !grade_class || !gender) {
             return res.status(400).send({
                 message: 'Please provide all required fields'
@@ -157,8 +173,6 @@ router.post('/students', isLoggedIn, isAdmin, async (req, res) => {
 router.get('/students', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const students = await Student.find();
-
-        console.log(students)
         res.status(200).json(students);
     } catch (error) {
         console.error('Error fetching students:', error);
@@ -241,6 +255,30 @@ router.put('/edit/:userId', isLoggedIn, isAdmin, async (req, res) => {
     }
 });
 
+router.delete('/delete-admin/:userId', isLoggedIn, isAdmin, async (req, res) => {
+    try {
+        const adminId = req.params.userId;
+
+        const admin = await User.findById(adminId);
+        if (!admin) {
+            return res.status(404).send({
+                error: 'User not found'
+            });
+        }
+
+        await User.findByIdAndDelete(adminId);
+
+        res.status(200).send({
+            message: 'User deleted successfully'
+        });
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).send({
+            error: 'Internal server error'
+        });
+    }
+});
+
 router.delete('/delete-teacher/:userId', isLoggedIn, isAdmin, async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -289,13 +327,50 @@ router.delete('/delete-student/:userId', isLoggedIn, isAdmin, async (req, res) =
     }
 });
 
-router.get('/data', async (req, res) => {
+// Endpoint for fetching titles
+router.get('/data/titles', async (req, res) => {
     try {
-        res.send({title, suffix, gender, grade});
+        res.send(title);
     } catch (error) {
-        console.error('Error fetching data for dropdowns:', error);
+        console.error('Error fetching titles:', error);
         res.status(500).send({
-            error: 'Failed to fetch data for dropdowns'
+            error: 'Failed to fetch titles'
+        });
+    }
+});
+
+// Endpoint for fetching suffixes
+router.get('/data/suffixes', async (req, res) => {
+    try {
+        res.send(suffix);
+    } catch (error) {
+        console.error('Error fetching suffixes:', error);
+        res.status(500).send({
+            error: 'Failed to fetch suffixes'
+        });
+    }
+});
+
+// Endpoint for fetching genders
+router.get('/data/genders', async (req, res) => {
+    try {
+        res.send(gender);
+    } catch (error) {
+        console.error('Error fetching genders:', error);
+        res.status(500).send({
+            error: 'Failed to fetch genders'
+        });
+    }
+});
+
+// Endpoint for fetching grades
+router.get('/data/grades', async (req, res) => {
+    try {
+        res.send(grade);
+    } catch (error) {
+        console.error('Error fetching grades:', error);
+        res.status(500).send({
+            error: 'Failed to fetch grades'
         });
     }
 });

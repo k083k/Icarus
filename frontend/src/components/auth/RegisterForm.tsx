@@ -3,7 +3,8 @@ import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/navigation";
-import {RegisterFormProps} from "@/app/register-teacher/RegisterFormProps";
+import { RegisterFormProps } from "@/types";
+import {registerTeacher} from "@/services/apiService";
 
 
 export default function RegisterForm({ roles, genders }: RegisterFormProps) {
@@ -44,28 +45,24 @@ export default function RegisterForm({ roles, genders }: RegisterFormProps) {
 
         setPasswordMatchError('');
 
-        await fetch('http://localhost:8000/api/v1/register-teacher', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        try {
+            await registerTeacher({
                 first_name: firstName,
                 last_name: lastName,
                 email: email,
                 password: password,
                 address: address,
                 role: selectedRole,
-                gender: selectedGender
-            })
-        });
+                gender: selectedGender,
+            });
 
-        router.push('/login');
-    }
+            router.push('/login');
+        } catch (error) {
+            console.error('Error creating teacher:', error);
+        }
+    };
 
-    // Function to validate password
     const validatePassword = (password: string) => {
-        // Regular expression to match password criteria
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         return passwordRegex.test(password);
     }
@@ -136,9 +133,7 @@ export default function RegisterForm({ roles, genders }: RegisterFormProps) {
                                     className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                                     value={selectedGender} onChange={(e) => setSelectedGender(e.target.value)}>
                                 <option value="">Select Gender</option>
-                                {/* Mapping over the genders array */}
                                 {genders.map((genderOption, index) => (
-                                    // Using the value property as the value of the option
                                     <option key={index} value={genderOption.value}>{genderOption.label}</option>
                                 ))}
                             </select>

@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
-    "framer-motion": "^11.0.21"
+    "chart.js": "^4.4.2",
+    "framer-motion": "^11.0.21",
+    "react-chartjs-2": "^5.2.0"
   }
 }

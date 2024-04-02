@@ -3,6 +3,7 @@ import React, {SyntheticEvent, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/navigation";
+import { loginUser } from '@/services/apiService';
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -17,44 +18,22 @@ export default function LoginForm() {
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8000/api/v1/login', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({
+        try {
+            const userData = {
                 email: email,
                 password: password,
-            })
-        });
-
-        if (response.ok) {
-            // Fetch userRole from cookies
-            const userRoleCookie = document.cookie
-                .split(';')
-                .find(cookie => cookie.trim().startsWith('userRole='));
-
-            if (userRoleCookie) {
-                const userRole = userRoleCookie.split('=')[1];
-
-                // Redirect based on userRole
-                switch (userRole) {
-                    case 'Admin':
-                        router.push('/admin-dashboard');
-                        break;
-                    case 'Teacher':
-                        router.push('/teacher-dashboard');
-                        break;
-                    default:
-                        router.push('/');
-                }
-            } else {
-                // If userRole is not found in cookies, redirect to the default page
+            };
+            const response = await loginUser(userData);
+            if (response ) {
                 router.push('/');
+            } else {
+                console.error('Login failed');
             }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            // Handle error, show error message or redirect to appropriate page
         }
-    }
+    };
 
     return (
         <div

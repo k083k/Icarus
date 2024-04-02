@@ -24,7 +24,7 @@ export default function Nav() {
                 className="flex-no-wrap z-[4] flex w-full items-center justify-between bg-white dark:bg-black py-2 shadow-dark-strong lg:flex-wrap lg:justify-start lg:py-4">
                 <div className="container mx-auto flex w-full flex-wrap items-center justify-between px-3">
                     <div className="flex items-center">
-                        <a href="/frontend/public" className='mr-3 text-black dark:text-white'>
+                        <a href="/" className='mr-3 text-black dark:text-white'>
                             <FontAwesomeIcon href={"/"} icon={faSchool} style={{height: '30px'}}/>
                         </a>
                     </div>
