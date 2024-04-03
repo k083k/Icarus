@@ -8,7 +8,7 @@ const Icarus = ({ children }) => {
             <Sidebar />
             <div className="flex flex-col flex-1">
                 <Navbar />
-                <main className="flex flex-col pt-5 h-screen ml-[80px]">
+                <main className="flex flex-col pt-5 font-nunito h-screen ml-[100px] mr-[20px]">
                     {children}
                 </main>
             </div>

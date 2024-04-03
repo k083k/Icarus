@@ -20,8 +20,8 @@ const roles: Roles = {
         {
             label: "Admins",
             url: "/admins",
-            lightIcon: "/icons/admin1.png",
-            darkIcon: "/icons/admin1W.png"
+            lightIcon: "/icons/adminIcon.png",
+            darkIcon: "/icons/adminIconW.png"
         },
         {
             label: "Students",

@@ -21,7 +21,7 @@ export default function Nav() {
     return (
         <header className="sticky top-0 z-10">
             <nav
-                className="flex-no-wrap z-[4] flex w-full items-center justify-between bg-white dark:bg-black py-2 shadow-dark-strong lg:flex-wrap lg:justify-start lg:py-4">
+                className="flex-no-wrap font-nunito z-[4] flex w-full items-center justify-between bg-white dark:bg-black py-2 shadow-dark-mild lg:flex-wrap lg:justify-start lg:py-4">
                 <div className="container mx-auto flex w-full flex-wrap items-center justify-between px-3">
                     <div className="flex items-center">
                         <a href="/" className='mr-3 text-black dark:text-white'>
