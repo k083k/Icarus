@@ -19,6 +19,9 @@ const config: Config = {
                 'admin-dash': "url('/images/image_4.jpg')",
                 'footer-texture': "url('/img/footer-texture.png')",
             },
+            fontFamily: {
+                'nunito': ['Nunito Sans', 'sans-serif'],
+            }
         },
     },
     dark: "class",

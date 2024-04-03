@@ -106,7 +106,7 @@ const StudentsTable = ({students, onDelete}) => {
 
     return (
         <>
-            <div className="container mx-auto w-2/3 mb-4 flex justify-between">
+            <div className="container font-nunito mx-auto w-2/3 mb-4 flex justify-between">
                 <div className='flex items-center'>
                     <a href="/create-student">
                         <FontAwesomeIcon icon={faPlusCircle}

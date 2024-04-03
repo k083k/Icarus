@@ -26,8 +26,8 @@ export default function PieChart({data}) {
                 options: {
                     plugins: {
                         legend: {
-                            position: 'left',
-                            align: 'end',
+                            position: 'top',
+                            align: 'center',
                         }
                     },
                 }
@@ -38,7 +38,7 @@ export default function PieChart({data}) {
 
     return (
         <>
-            <canvas className='cursor-pointer' ref={chartRef}/>
+            <canvas className='cursor-pointer' ref={chartRef} width={50} height={50}/>
         </>
     )
 }

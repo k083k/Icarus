@@ -61,7 +61,7 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`flex flex-col justify-center fixed left-0 top-0 z-[3] h-full dark:bg-black bg-white shadow-dark-strong transition-width duration-300 ${isSlim ? 'w-20' : 'w-60'}`}
+            className={`flex flex-col justify-center fixed left-0 top-0 font-nunito z-[3] h-full dark:bg-black bg-white shadow-dark-mild transition-width duration-300 ${isSlim ? 'w-20' : 'w-60'}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
