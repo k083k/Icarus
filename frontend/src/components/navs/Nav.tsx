@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {faBars, faSchool, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
 import useAuth from "@/hooks/useAuth";
 
@@ -63,22 +62,15 @@ export default function Nav() {
                 </div>
 
                 {menuOpen && (
-                    <div className="container mx-auto mt-2 md:hidden">
+                    <div className="container mx-auto mt-2 lg:hidden">
                         <ul className="flex flex-col space-y-2">
-                            {auth && (
-                                <li><a href={`/${userRole === 'Teacher' ? 'teacher-dashboard' : 'admin-dashboard'}`}
-                                       className="text-white">Dashboard</a></li>
-                            )}
-                            {!auth && (
-                                <li><a href="/frontend/public" className="text-white">Home</a></li>
-                            )}
-                            {!auth && (
-                                <li><a href="/frontend/public" className="text-white">Classes</a></li>
-                            )}
-                            {auth && userRole === 'Admin' && (
-                                <li><a href="/create-student" className="text-white">Create Student</a></li>
-                            )}
-                            <li><a href="/frontend/public" className="text-white">TimeTable</a></li>
+                            <li><a href="/frontend/public" className="text-white">Home</a></li>
+
+                            <li><a href="/frontend/public" className="text-white">About</a></li>
+
+                            <li><a href="/create-student" className="text-white">Services</a></li>
+
+                            <li><a href="/frontend/public" className="text-white">Contact Support</a></li>
                         </ul>
                     </div>
                 )}

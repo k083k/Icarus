@@ -1,9 +1,8 @@
-import React, {useEffect, useRef} from 'react';
-import {Chart} from "chart.js/auto"
-import {useRouter} from "next/navigation";
+// BarChart.js
+import React, { useEffect, useRef } from 'react';
+import { Chart } from "chart.js/auto";
 
-
-export default function BarChart({data}) {
+const BarChart = ({ gradeCounts }) => {
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -16,12 +15,11 @@ export default function BarChart({data}) {
             chartRef.current.chart = new Chart(context, {
                 type: 'bar',
                 data: {
-                    labels: data.labels,
+                    labels: Object.keys(gradeCounts),
                     datasets: [{
                         label: 'Number of Students',
-                        data: data.values,
-                        backgroundColor: data.colors,
-                        borderColor: '#000',
+                        data: Object.values(gradeCounts),
+                        backgroundColor: ['#98d59a', '#aac9e0', '#7e2771', '#229cff'],
                     }]
                 },
                 options: {
@@ -32,15 +30,19 @@ export default function BarChart({data}) {
                             align: 'center',
                         }
                     },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
             });
         }
-    }, [data]);
-
+    }, [gradeCounts]);
 
     return (
-        <>
-            <canvas className='cursor-pointer' ref={chartRef} width={100} height={100}/>
-        </>
+        <canvas className='cursor-pointer' ref={chartRef} width={100} height={100}/>
     )
-}
+};
+
+export default BarChart;

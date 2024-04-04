@@ -6,23 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b324a67c-c02e-4909-918b-eadbd7ed9aab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/icons/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/icons/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/admin-dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/admin-dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/data/roles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/data/roles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/layouts/icarus.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layouts/icarus.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/students/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/students/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/charts/BarChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/charts/BarChart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/charts/PieChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/charts/PieChart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/misc/TimeDate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/misc/TimeDate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/navs/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navs/Nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/navs/SideNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navs/SideNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/students/StudentRow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/students/StudentRow.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/students/StudentsTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/students/StudentsTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +45,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/k083k0r3/Desktop/Project Icarus&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -82,7 +68,7 @@
       <recent name="$PROJECT_DIR$/frontend/src/components/auth" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.Backend">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="Backend" type="NodeJSConfigurationType" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/backend">
       <method v="2" />
     </configuration>
@@ -128,7 +114,8 @@
       <workItem from="1712004995633" duration="25954000" />
       <workItem from="1712162605048" duration="5435000" />
       <workItem from="1712171296535" duration="602000" />
-      <workItem from="1712172632215" duration="3546000" />
+      <workItem from="1712172632215" duration="4116000" />
+      <workItem from="1712178094653" duration="5229000" />
     </task>
     <servers />
   </component>
