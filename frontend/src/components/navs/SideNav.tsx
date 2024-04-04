@@ -97,7 +97,6 @@ const Sidebar = () => {
             </div>
 
             <ul className="py-4 mt-12 mb-12">
-                {/* Conditionally render icon and label based on sidebar mode */}
                 {roles[userRole].map((item, index) => (
                     <li key={index} className="mb-4">
                         {isSlim ? (
@@ -108,7 +107,7 @@ const Sidebar = () => {
                             </a>
                         ) : (
                             <a href={item.url}
-                               className="flex items-center mb text-black dark:text-white hover:bg-neutral-800/25 dark:hover:bg-zinc-200/60 p-3 rounded">
+                               className="flex items-center mb text-black dark:text-white hover:bg-neutral-800/25 dark:hover:bg-zinc-200/60 p-3 rounded cursor-pointer">
                                 <Image src={isDarkMode ? item.darkIcon : item.lightIcon} alt={item.label} width={30}
                                        height={30}/> &nbsp;&nbsp;&nbsp;
                                 {item.label}

@@ -1,10 +1,8 @@
-import React, {useEffect, useRef} from 'react';
-import {Chart} from "chart.js/auto"
-import {useRouter} from "next/navigation";
+'use client'
+import React, { useEffect, useRef } from 'react';
+import { Chart } from "chart.js/auto";
 
-
-export default function PieChart({data}) {
-    const router = useRouter();
+const PieChart = ({ data, labels, colors }) => {
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -17,10 +15,10 @@ export default function PieChart({data}) {
             chartRef.current.chart = new Chart(context, {
                 type: 'pie',
                 data: {
-                    labels: data.labels,
+                    labels: labels,
                     datasets: [{
-                        data: data.values,
-                        backgroundColor: data.colors,
+                        data: data,
+                        backgroundColor: colors,
                     }]
                 },
                 options: {
@@ -33,12 +31,11 @@ export default function PieChart({data}) {
                 }
             });
         }
-    }, [data]);
-
+    }, [data, labels, colors]);
 
     return (
-        <>
-            <canvas className='cursor-pointer' ref={chartRef} width={50} height={50}/>
-        </>
-    )
-}
+        <canvas className='cursor-pointer' ref={chartRef} width={50} height={50} />
+    );
+};
+
+export default PieChart;

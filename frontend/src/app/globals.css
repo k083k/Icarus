@@ -27,3 +27,7 @@ body {
     text-wrap: normal;
   }
 }
+
+.card-background-dark{
+  background-color: #e5e7eb;
+}
