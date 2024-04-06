@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b324a67c-c02e-4909-918b-eadbd7ed9aab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/students/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/students/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/charts/BarChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/charts/BarChart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/charts/PieChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/charts/PieChart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/admin-dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/admin-dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/register-teacher/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/register-teacher/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/teachers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/teachers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +21,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "k083k"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/k083k/Icarus.git",
+    "accountId": "5ef9ebeb-11e1-4c97-b53d-0795653fefb2"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -45,7 +60,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/k083k0r3/Desktop/Project Icarus&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -68,7 +83,7 @@
       <recent name="$PROJECT_DIR$/frontend/src/components/auth" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.Backend">
     <configuration name="Backend" type="NodeJSConfigurationType" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/backend">
       <method v="2" />
     </configuration>
@@ -86,6 +101,14 @@
       <item itemvalue="Node.js.Backend" />
       <item itemvalue="npm.dev" />
     </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -116,6 +139,8 @@
       <workItem from="1712171296535" duration="602000" />
       <workItem from="1712172632215" duration="4116000" />
       <workItem from="1712178094653" duration="5229000" />
+      <workItem from="1712326973034" duration="3627000" />
+      <workItem from="1712340254575" duration="1667000" />
     </task>
     <servers />
   </component>

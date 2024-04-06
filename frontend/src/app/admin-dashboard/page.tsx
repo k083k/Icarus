@@ -11,7 +11,6 @@ import Image from "next/image";
 import TimeDate from '@/components/misc/TimeDate';
 
 
-
 const AdminDashboard = () => {
     const {firstName} = useAuth();
     const [totalStudents, setTotalStudents] = useState(0);
@@ -62,27 +61,23 @@ const AdminDashboard = () => {
                 </div>
                 <div className='flex flex-col h-full w-1/2 gap-y-1'>
                     <Card className='bg-rose-700 dark:bg-pink-800 opacity-80 w-full h-1/4'>
-                        <div className='flex flex-col justify-center h-full font-bold py-6'>
-                            <h1 className='text-center text-xl mb-6'>
-                                <TimeDate />
+                        <div className='flex flex-col justify-center font-nunito h-full py-6'>
+                            <h1 className='text-center text-md mb-6'>
+                                <TimeDate/>
                             </h1>
                         </div>
                     </Card>
                     <div className='flex flex-row h-3/4 gap-2'>
                         <Card className='bg-rose-700 dark:bg-pink-800 opacity-80 w-1/2'>
                             <Image src={UsersIcon} alt={'users icon'} height={50} width={50}/>
-                            <div className='flex flex-col justify-around h-full font-bold py-6'>
-                                <div className='bottom'>
-                                    <h1 className='text-center text-xl mb-6'>Total
-                                        Users: {totalStudents + totalTeachers + totalAdmins}</h1>
-                                </div>
+                            <div className='flex flex-col justify-start h-full font-nunito py-6'>
+                                <h1 className='text-center text-xl mb-6'>Total
+                                    Users: {totalStudents + totalTeachers + totalAdmins}</h1>
                             </div>
                         </Card>
                         <Card className='bg-rose-700 dark:bg-pink-800 opacity-80 w-1/2'>
-                            <div className='flex flex-col justify-around h-full font-bold py-6'>
-                                <div className='bottom'>
-                                    <h1 className='text-center text-xl mb-6'>Something else here</h1>
-                                </div>
+                            <div className='flex flex-col justify-center h-full py-6'>
+                                <h1 className='text-center text-xl mb-6'>Something else here</h1>
                             </div>
                         </Card>
                     </div>
@@ -90,11 +85,12 @@ const AdminDashboard = () => {
             </div>
             <div className='w-full h-2/4 gap-y-1 mb-2'>
                 <Card
-                    className='flex flex-row justify-around bg-cyan-200 dark:bg-cyan-800 opacity-50 w-full h-full'>
+                    className='flex flex-row justify-around bg-cyan-200 dark:bg-cyan-600 opacity-50 w-full h-full'>
                     <div className='flex justify-center items-center font-bold py-6 w-1/2'>
                         <h1> Some Info Here </h1>
                     </div>
-                    <div className='flex justify-center items-center font-bold py-6 w-1/2'>
+                    <div className='flex flex-col justify-center items-center font-bold py-6 w-1/2'>
+                        <h1>Personnel Chart</h1>
                         <DoughnutChart data={chartData}/>
                     </div>
                 </Card>

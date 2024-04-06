@@ -37,7 +37,7 @@ export default function LoginForm() {
 
     return (
         <div
-            className="w-full bg-neutral-800/25 rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            className="w-full bg-neutral-800/25 rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700 font-nunito">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <form className="space-y-4 md:space-y-6" onSubmit={submit}>
                     <div>

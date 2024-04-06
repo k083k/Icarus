@@ -38,7 +38,7 @@ export default function Register() {
 
     return (
         <section>
-            <div className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-0 overflow-hidden">
+            <div className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-0 overflow-hidden font-nunito">
                 <a href="/">
                     <FontAwesomeIcon className='rounded-full text-white bg-neutral-800/25 dark:bg-gray-800 p-3 border-1 h-16 w-16 my-3' icon={faLaptop}/>
                 </a>

@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import Icarus from "@/app/layouts/icarus";
 import TeachersTable from "@/components/teachers/TeachersTable";
-import {deleteTeacher, fetchTeachers, fetchGenders} from "@/services/apiService";
+import {deleteTeacher, fetchGenders, fetchTeachers} from "@/services/apiService";
 import {faTrashCan} from "@fortawesome/free-solid-svg-icons";
 import Toast from "@/components/misc/Toast";
 import {Gender, Teacher} from "@/types";
@@ -22,9 +22,9 @@ const Teachers = () => {
 
     useEffect(() => {
         fetchTeachers().then(teachers => {
-                setTeachers(teachers);
-                updateChartData(teachers);
-            })
+            setTeachers(teachers);
+            updateChartData(teachers);
+        })
             .catch(error => {
                 console.error('Error fetching teachers data:', error);
             });
@@ -74,11 +74,11 @@ const Teachers = () => {
                 </Card>
             </div>
             <div className='h-3/5 mt-2'>
-                <TeachersTable teachers={teachers} onDelete={handleDelete} genders={genders}/>
+                <TeachersTable teachers={teachers} onDelete={handleDelete}/>
                 {showToast && <Toast icon={toastIcon} message={toastMessage} onClose={() => setShowToast(false)}/>}
-                </div>
+            </div>
         </Icarus>
-)
+    )
 };
 
 export default withRoleGuard(['Admin'])(Teachers);
