@@ -61,7 +61,7 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`flex flex-col justify-center fixed left-0 top-0 font-nunito z-[3] h-full dark:bg-black bg-white shadow-dark-mild transition-width duration-300 ${isSlim ? 'w-20' : 'w-60'}`}
+            className={`flex flex-col justify-center fixed left-0 top-0 font-nunito z-[5] h-full dark:bg-black bg-white shadow-dark-mild transition-width duration-300 ${isSlim ? 'w-20' : 'w-60'}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
@@ -81,10 +81,10 @@ const Sidebar = () => {
                     <div className="flex flex-col items-center justify-center">
                         <div className="mx-auto mb-2">
                             {userGender === 'male' ? (
-                                <Image src={CorporateManAvatar} alt="User Avatar" width={100} height={100}
+                                <Image src={CorporateManAvatar} alt="User Avatar" width={50} height={50}
                                        className="rounded-full"/>
                             ) : (
-                                <Image src={AvatarWoman} alt="User Avatar" width={100} height={100}
+                                <Image src={AvatarWoman} alt="User Avatar" width={50} height={50}
                                        className="rounded-full"/>
                             )}
                         </div>
@@ -100,7 +100,7 @@ const Sidebar = () => {
                 {roles[userRole].map((item, index) => (
                     <li key={index} className="mb-4">
                         {isSlim ? (
-                            <a href="#"
+                            <a href={item.url}
                                className="flex items-center justify-center text-white hover:bg-gray-700 p-3 rounded-lg">
                                 <Image src={isDarkMode ? item.darkIcon : item.lightIcon} alt={item.label} width={30}
                                        height={30}/>

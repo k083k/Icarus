@@ -1,8 +1,8 @@
 // BarChart.js
-import React, { useEffect, useRef } from 'react';
-import { Chart } from "chart.js/auto";
+import React, {useEffect, useRef} from 'react';
+import {Chart} from "chart.js/auto";
 
-const BarChart = ({ gradeCounts }) => {
+const BarChart = ({gradeCounts}) => {
     const chartRef = useRef(null);
 
     useEffect(() => {

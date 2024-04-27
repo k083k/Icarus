@@ -41,6 +41,12 @@ const roles: Roles = {
             lightIcon: "/icons/parentsIcon.png",
             darkIcon: "/icons/parentsIconW.png"
         },
+        {
+            label: "Grades",
+            url: "/grades",
+            lightIcon: "/icons/classIcon.png",
+            darkIcon: "/icons/classIconW.png"
+        },
         // Add more admin role items if needed
     ],
     Teacher: [
@@ -51,8 +57,8 @@ const roles: Roles = {
             darkIcon: "/icons/tDashboardIconW.png"
         },
         {
-            label: "Classes",
-            url: "/teacher-dashboard",
+            label: "Grades",
+            url: "/grades",
             lightIcon: "/icons/classIcon.png",
             darkIcon: "/icons/classIconW.png"
         },

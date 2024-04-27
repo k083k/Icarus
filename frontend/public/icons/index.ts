@@ -9,6 +9,7 @@ import UsersIconW from "./UsersIconW.png";
 import UsersIcon from "./UsersIcon.png";
 import ClockIcon from './clockIcon.png';
 import CalendarIcon from './calendarIcon.png';
+import ClassIcon from './classIcon.png'
 
 export {
     dashboardIcon,
@@ -21,5 +22,6 @@ export {
     UsersIcon,
     UsersIconW,
     ClockIcon,
-    CalendarIcon
+    CalendarIcon,
+    ClassIcon
 };

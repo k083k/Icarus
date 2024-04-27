@@ -4,11 +4,11 @@ import Navbar from '../../components/navs/Nav';
 
 const Icarus = ({ children }) => {
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen font-nunito">
             <Sidebar />
             <div className="flex flex-col flex-1">
                 <Navbar />
-                <main className="flex flex-col pt-5 font-nunito h-screen ml-[100px] mr-[20px]">
+                <main className="flex flex-col pt-5 font-nunito h-screen ml-[100px] mr-[20px] overflow-y-auto">
                     {children}
                 </main>
             </div>

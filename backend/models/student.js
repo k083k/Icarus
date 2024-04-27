@@ -28,7 +28,7 @@ const studentSchema = new mongoose.Schema({
     grade_class: {
         type: String,
         required: true
-    }
+    },
 });
 
 module.exports = mongoose.model('Student', studentSchema);
