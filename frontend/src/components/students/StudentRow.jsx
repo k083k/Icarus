@@ -1,10 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import {AvatarMan, AvatarWoman} from '../../../public/avatars';
+import {useRouter} from "next/navigation";
 
 const StudentRow = ({student, onView, onDelete}) => {
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push(`/students/${student._id}`); // Navigate to grade details page
+    };
 
     const handleView = () => {
         onView(student, "View Student Details");
@@ -17,8 +23,8 @@ const StudentRow = ({student, onView, onDelete}) => {
     const avatarSrc = student.gender === 'male' ? AvatarMan : AvatarWoman;
 
     return (
-        <tr className="bg-white font-nunito border-b dark:bg-gray-700 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <tr className="bg-white font-nunito border-b dark:bg-gray-700 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" >
+            <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" onClick={handleClick}>
                 <Image className="w-10 h-10 rounded-full" src={avatarSrc} alt={`${student.first_name} ${student.last_name}`} />
                 <div className="ps-3">
                     <div className="text-base font-semibold">{`${student.first_name} ${student.last_name}`}</div>

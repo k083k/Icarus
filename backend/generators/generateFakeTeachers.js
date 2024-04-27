@@ -1,40 +1,47 @@
-const faker = require('faker');
 const mongoose = require('mongoose');
-const User = require('../models/user'); // Import your Mongoose model
-const Role = require('../models/role'); // Import your Role model
+const faker = require('faker');
+const User = require('../models/user');
+const Role = require('../models/role');
 
+// Connect to MongoDB
 mongoose.connect('mongodb+srv://k083k0r3:a2wcha3g6r@cluster0.4qnnics.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 });
+const db = mongoose.connection;
 
-const getRandomRoleId = async () => {
-    const roles = await Role.find();
-    const randomRole = faker.random.arrayElement(roles);
-    return randomRole._id;
-};
-const generateFakeUser = async () => {
-    const roleId = await getRandomRoleId();
-    return {
-        first_name: faker.name.firstName(),
-        last_name: faker.name.lastName(),
-        address: faker.address.streetAddress(),
-        email: faker.internet.email(),
-        password: faker.internet.password(),
-        role: roleId
-    };
-};
+// Event listeners for MongoDB connection
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', async () => {
+    console.log('Connected to MongoDB');
 
-const numberOfUsers = 10;
-const saveFakeUsersToDatabase = async () => {
-    const users = [];
-    for (let i = 0; i < numberOfUsers; i++) {
-        const fakeUser = await generateFakeUser();
-        users.push(fakeUser);
+    try {
+        // Fetch role IDs for "Admin", "Teacher", and "Parent"
+        const teacherRole = await Role.findOne({ name: 'Teacher' });
+
+        // Generate fake teachers with different roles
+        const teachersData = [];
+        for (let i = 0; i < 10; i++) {
+            const role = teacherRole ;
+            const teacher = {
+                first_name: faker.name.firstName(),
+                last_name: faker.name.lastName(),
+                address: faker.address.streetAddress(),
+                email: faker.internet.email(),
+                password: faker.internet.password(),
+                role: role._id,
+                gender: faker.random.arrayElement(['male', 'female'])
+            };
+            teachersData.push(teacher);
+        }
+
+        // Insert generated teachers data into the database
+        const teachers = await User.create(teachersData);
+        console.log('Teachers seeded successfully:', teachers);
+    } catch (err) {
+        console.error('Error seeding teachers:', err);
+    } finally {
+        // Close the connection
+        mongoose.connection.close();
     }
-    await User.insertMany(users);
-    console.log(`Fake user data saved to the database successfully (${numberOfUsers} users).`);
-    mongoose.connection.close();
-};
-
-saveFakeUsersToDatabase();
+});

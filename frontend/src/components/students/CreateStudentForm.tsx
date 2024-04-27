@@ -11,11 +11,11 @@ interface Props {
     titles: Title[];
     suffixes: Suffix[];
     genders: Gender[];
-    grades: Grade[]
+    gradeNames: Grade[];
 }
 
 
-export default function CreateStudentForm({titles, suffixes, genders, grades}: Props) {
+export default function CreateStudentForm({titles, suffixes, genders, gradeNames}: Props) {
     const router = useRouter();
     const [formData, setFormData] = useState({
         first_name: '',
@@ -172,9 +172,11 @@ export default function CreateStudentForm({titles, suffixes, genders, grades}: P
                                         value={formData.grade_class} onChange={handleChange}>
                                     <option value="">Select Grade</option>
                                     {/* Mapping over the grades array */}
-                                    {grades.map((gradeOption, index) => (
-                                        // Using the value property as the value of the option
-                                        <option key={index} value={gradeOption.value}>{gradeOption.label}</option>
+                                    {gradeNames.map((gradeOption) => (
+                                        // Using the _id property as the value of the option and name as the label
+                                        <option key={gradeOption._id} value={gradeOption.name}>
+                                            {gradeOption.name}
+                                        </option>
                                     ))}
                                 </select>
                             </div>

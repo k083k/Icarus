@@ -44,9 +44,64 @@ export async function fetchStudents() {
     return await fetchData(url, {credentials: 'include'});
 }
 
+export async function fetchGrades() {
+    const url = `${BASE_URL}/grades`;
+    return await fetchData(url, {credentials: 'include'});
+}
+
+export async function fetchGradeNames() {
+    const url = `${BASE_URL}/grade-names`;
+    return await fetchData(url, {credentials: 'include'});
+}
+
+export async function fetchGradeById(gradeId) {
+    const url = `${BASE_URL}/grades/${gradeId}`;
+    return await fetchData(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    });
+}
+
+export async function fetchStudentById(studentId) {
+    const url = `${BASE_URL}/students/${studentId}`;
+    return await fetchData(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    });
+}
+
+export async function fetchTeacherById(teacherId) {
+    const url = `${BASE_URL}/teachers/${teacherId}`;
+    return await fetchData(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    });
+}
+
+export async function fetchAdminById(adminId) {
+    const url = `${BASE_URL}/admins/${adminId}`;
+    return await fetchData(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    });
+}
+
+
 export async function createStudent(studentData) {
     const url = `${BASE_URL}/students`;
-    return await fetchData(url, {
+    return await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -92,7 +147,7 @@ export async function createTeacher(teacherData) {
 
 export async function registerTeacher(teacherData) {
     try {
-        const response = await fetch(`${BASE_URL}/teachers`, {
+        const response = await fetch(`${BASE_URL}/register-teacher`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -178,10 +233,10 @@ export async function fetchGenders() {
     return await fetchData(url, {credentials: 'include'});
 }
 
-export async function fetchGrades() {
-    const url = `${BASE_URL}/data/grades`;
-    return await fetchData(url, {credentials: 'include'});
-}
+// export async function fetchGrades() {
+//     const url = `${BASE_URL}/data/grades`;
+//     return await fetchData(url, {credentials: 'include'});
+// }
 
 export async function logoutUser() {
     const url = `${BASE_URL}/logout`;

@@ -4,10 +4,10 @@ import Icarus from '@/app/layouts/icarus';
 import StudentsTable from '@/components/students/StudentsTable';
 import PieChart from '@/components/charts/PieChart';
 import BarChart from '@/components/charts/BarChart';
-import { deleteStudent, fetchStudents } from '@/services/apiService';
+import {deleteStudent, fetchGrades, fetchStudents} from '@/services/apiService';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import Toast from "@/components/misc/Toast";
-import { Student } from "@/types";
+import {Student} from "@/types";
 import Card from "@/components/misc/Card";
 import withRoleGuard from "@/hoc/withRoleGuard";
 import './students.css'
@@ -19,15 +19,21 @@ const Students = () => {
     const [toastIcon, setToastIcon] = useState<any>(null);
     const [totalMaleStudents, setTotalMaleStudents] = useState<number>(0);
     const [totalFemaleStudents, setTotalFemaleStudents] = useState<number>(0);
+    const [grades, setGrades] = useState<number>(0);
+
 
     useEffect(() => {
-        fetchStudents().then((students) => {
-            setStudents(students);
-            updateChartData(students);
-        }).catch(error => {
-            console.error('Error fetching students data:', error);
-        });
+        Promise.all([fetchStudents(), fetchGrades()])
+            .then(([students, grades]) => {
+                setStudents(students);
+                setGrades(grades)
+                updateChartData(students);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     }, []);
+
 
     const updateChartData = (students: Student[]) => {
         const maleStudents = students.filter(student => student.gender === 'male').length;
@@ -66,7 +72,7 @@ const Students = () => {
 
     return (
         <Icarus>
-            <div className='container font-nunito mx-auto flex flex-row gap-2 mb-2 w-2/3 h-2/5'>
+            <div className='container font-nunito mx-auto flex flex-row gap-2 mb-2 w-2/3 h-2/5'>  {/* grid grid-cols-1 md:grid-cols-2 gap-2 mb-2 w-2/3 h-2/5 */}
                 <Card className='flex flex-col justify-center items-center card-background-dark opacity-80 w-1/2 shadow-dark-mild'>
                     <PieChart
                         data={[totalMaleStudents, totalFemaleStudents]}
@@ -75,11 +81,11 @@ const Students = () => {
                     />
                 </Card>
                 <Card className='flex flex-col justify-center items-center card-background-dark opacity-80 w-1/2 shadow-dark-mild'>
-                    <BarChart gradeCounts={gradeCounts} />
+                    <BarChart gradeCounts={gradeCounts}/>
                 </Card>
             </div>
             <div className='h-3/5 mt-2'>
-                <StudentsTable students={students} onDelete={handleDelete} />
+                <StudentsTable students={students} onDelete={handleDelete}/>
                 {showToast && <Toast icon={toastIcon} message={toastMessage} onClose={() => setShowToast(false)} />}
             </div>
         </Icarus>

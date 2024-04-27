@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export interface Title {
     value: string;
     label: string;
@@ -14,8 +16,16 @@ export interface Gender {
 }
 
 export interface Grade {
-    value: string;
-    label: string;
+    _id: string;
+    name: string;
+    subjects: string[]; // Array of subject IDs
+    students: StudentInfo[]; // Array of StudentInfo objects
+    __v: number;
+}
+
+export interface StudentInfo {
+    _id: string;
+    name: string;
 }
 
 export interface Role {
@@ -80,4 +90,10 @@ export interface RegisterFormProps {
 
 export interface AvatarProps {
     auth: boolean;
+}
+
+export interface CardProps {
+    children: ReactNode;
+    className?: string;
+    onClick?: () => void; // Making onClick optional
 }

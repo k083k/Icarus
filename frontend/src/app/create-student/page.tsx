@@ -6,7 +6,7 @@ import {faLaptop} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/navigation";
 import withRoleGuard from "@/hoc/withRoleGuard";
 import Icarus from "@/app/layouts/icarus";
-import { fetchTitles, fetchSuffixes, fetchGenders, fetchGrades } from "@/services/apiService";
+import { fetchTitles, fetchSuffixes, fetchGenders, fetchGradeNames } from "@/services/apiService";
 
 
 const CreateStudent = () => {
@@ -14,7 +14,7 @@ const CreateStudent = () => {
     const [titles, setTitles] = useState([]);
     const [suffixes, setSuffixes] = useState([]);
     const [genders, setGender] = useState([]);
-    const [grades, setGrade] = useState([]);
+    const [gradeNames, setGradeNames] = useState([]);
     const router = useRouter();
 
     useEffect(() => {
@@ -32,8 +32,8 @@ const CreateStudent = () => {
             const genderData = await fetchGenders();
             setGender(genderData);
 
-            const gradeData = await fetchGrades();
-            setGrade(gradeData);
+            const gradeData = await fetchGradeNames();
+            setGradeNames(gradeData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -49,7 +49,7 @@ const CreateStudent = () => {
                     <h1 className="text-xl mb-5 font-normal leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Create New Student
                     </h1>
-                    <CreateStudentForm titles={titles} suffixes={suffixes} genders={genders} grades={grades}/>
+                    <CreateStudentForm titles={titles} suffixes={suffixes} genders={genders} gradeNames={gradeNames}/>
                 </div>
             </section>
         </Icarus>

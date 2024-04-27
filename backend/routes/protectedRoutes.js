@@ -4,9 +4,11 @@ const User = require('../models/user'); // Assuming you have a User model
 const Role = require('../models/role');
 const roles = require('../config/roles')
 const Student = require('../models/Student');
+const Grades = require('../models/grade')
 const isAdmin = require("../middleware/isAdmin");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const {title, suffix, gender, grade} = require("../data/data");
+const isAdminOrTeacher = require("../middleware/isAdminOrTeacher");
+const {title, suffix, gender} = require("../data/data");
 
 
 // Define a route for creating a new user (Admin)
@@ -133,16 +135,16 @@ router.get('/teachers', isLoggedIn, isAdmin, async (req, res) => {
     }
 });
 
-
 router.post('/students', isLoggedIn, isAdmin, async (req, res) => {
     try {
-        const {first_name, last_name, date_of_birth, address, parentName, grade_class, gender} = req.body;
+        const { first_name, last_name, date_of_birth, address, parentName, grade_class, gender } = req.body;
         if (!first_name || !last_name || !date_of_birth || !parentName || !address || !grade_class || !gender) {
             return res.status(400).send({
                 message: 'Please provide all required fields'
             });
         }
 
+        // Create new student
         const newStudent = new Student({
             first_name,
             last_name,
@@ -153,8 +155,23 @@ router.post('/students', isLoggedIn, isAdmin, async (req, res) => {
             gender
         });
 
+        // Save the student to the database
         const result = await newStudent.save();
         const data = await result.toJSON();
+
+        // Find the corresponding Grade object using the grade name
+        const grade = await Grades.findOne({ name: grade_class });
+
+        if (!grade) {
+            return res.status(404).send({
+                message: 'Grade not found'
+            });
+        }
+
+        // Push the student's name and id into the students array of the grade
+        grade.students.push({ _id: newStudent._id, name: `${first_name} ${last_name}` });
+        await grade.save();
+
         res.status(201).send({
             status_code: 201,
             data: data,
@@ -169,10 +186,12 @@ router.post('/students', isLoggedIn, isAdmin, async (req, res) => {
     }
 });
 
-
 router.get('/students', isLoggedIn, isAdmin, async (req, res) => {
     try {
-        const students = await Student.find();
+        const students = await Student.find().populate({
+            path: 'grade_class',
+            select: 'name' // Selecting only the name field from the Grade document
+        });
         res.status(200).json(students);
     } catch (error) {
         console.error('Error fetching students:', error);
@@ -307,14 +326,19 @@ router.delete('/delete-student/:userId', isLoggedIn, isAdmin, async (req, res) =
     try {
         const studentId = req.params.userId;
 
+        // Check if the student exists
         const student = await Student.findById(studentId);
         if (!student) {
             return res.status(404).send({
-                error: 'User not found'
+                error: 'Student not found'
             });
         }
 
+        // Delete the student
         await Student.findByIdAndDelete(studentId);
+
+        // Update all grades to remove the deleted student's ID from their student arrays
+        await Grades.updateMany({}, { $pull: { students: { _id: studentId } } });
 
         res.status(200).send({
             message: 'Student deleted successfully'
@@ -326,7 +350,6 @@ router.delete('/delete-student/:userId', isLoggedIn, isAdmin, async (req, res) =
         });
     }
 });
-
 // Endpoint for fetching titles
 router.get('/data/titles', async (req, res) => {
     try {
@@ -351,7 +374,6 @@ router.get('/data/suffixes', async (req, res) => {
     }
 });
 
-// Endpoint for fetching genders
 router.get('/data/genders', async (req, res) => {
     try {
         res.send(gender);
@@ -364,14 +386,91 @@ router.get('/data/genders', async (req, res) => {
 });
 
 // Endpoint for fetching grades
-router.get('/data/grades', async (req, res) => {
+// router.get('/data/grades', async (req, res) => {
+//     try {
+//         res.send(grade);
+//     } catch (error) {
+//         console.error('Error fetching grades:', error);
+//         res.status(500).send({
+//             error: 'Failed to fetch grades'
+//         });
+//     }
+// });
+
+router.get('/grades', isLoggedIn, isAdminOrTeacher, async (req, res) => {
     try {
-        res.send(grade);
+        const grades = await Grades.find();
+        grades.sort()
+        res.status(200).send(grades);
     } catch (error) {
         console.error('Error fetching grades:', error);
-        res.status(500).send({
-            error: 'Failed to fetch grades'
-        });
+        res.status(500).send({error: 'Failed to fetch grades'});
+    }
+});
+
+router.get('/grades/:id', isLoggedIn, isAdminOrTeacher, async (req, res) => {
+    try {
+        const grade = await Grades.findById(req.params.id);
+        if (!grade) {
+            return res.status(404).send({ error: 'Grade not found' });
+        }
+        res.status(200).send(grade);
+    } catch (error) {
+        console.error('Error fetching grade:', error);
+        res.status(500).send({ error: 'Failed to fetch grade' });
+    }
+});
+
+router.get('/students/:id', isLoggedIn, isAdminOrTeacher, async (req, res) => {
+    try {
+        const student = await Student.findById(req.params.id);
+        if (!student) {
+            return res.status(404).send({ error: 'Student not found' });
+        }
+        res.status(200).send(student);
+    } catch (error) {
+        console.error('Error fetching student:', error);
+        res.status(500).send({ error: 'Failed to fetch student' });
+    }
+});
+
+router.get('/teachers/:id', isLoggedIn, isAdminOrTeacher, async (req, res) => {
+    try {
+        const teacher = await User.findById(req.params.id);
+        if (!teacher) {
+            return res.status(404).send({ error: 'Teacher not found' });
+        }
+        res.status(200).send(teacher);
+    } catch (error) {
+        console.error('Error fetching teacher:', error);
+        res.status(500).send({ error: 'Failed to fetch teacher' });
+    }
+});
+
+router.get('/admins/:id', isLoggedIn, isAdminOrTeacher, async (req, res) => {
+    try {
+        const admin = await User.findById(req.params.id);
+        if (!admin) {
+            return res.status(404).send({ error: 'Admin not found' });
+        }
+        res.status(200).send(admin);
+    } catch (error) {
+        console.error('Error fetching admin:', error);
+        res.status(500).send({ error: 'Failed to fetch admin' });
+    }
+});
+
+router.get('/grade-names', isLoggedIn, isAdminOrTeacher, async (req, res) => {
+    try {
+        // Fetch only the grade names from the database
+        const gradeNames = await Grades.find({}, {name: 1 });
+
+        gradeNames.sort()
+        // Send the grade names as a response
+        res.status(200).send(gradeNames);
+    } catch (error) {
+        console.error('Error fetching grade names:', error);
+        res.status(500).send({ error: 'Failed to fetch grade names' });
     }
 });
 
