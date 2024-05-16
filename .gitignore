@@ -5,7 +5,7 @@ node_modules/
 .next/
 
 # Environment variables file
-.env.local
+.env
 
 # IDE files
 .idea/
@@ -13,3 +13,6 @@ node_modules/
 
 # System files
 .DS_Store
+
+# generators
+/backend/generators
